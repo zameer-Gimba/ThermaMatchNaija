@@ -1,5 +1,6 @@
 'use client';
 
+import './globals.css';
 import React, { useState, useMemo } from 'react';
 import { industrialProfiles } from '../data/dummyData';
 import MetricCard from '../components/MetricCard';
