@@ -66,11 +66,5 @@ npm run dev
 Open `http://localhost:3000` to review the local simulation environment.
 
 ---
-
-## 💡 Academic & Research Context
-For international research grant tracks or MSc applications, this setup models a decentralized matchmaking heuristic aimed at solving localized thermal degradation across short-distance spatial distributions in developing energy grids. 
-
----
-
 ## ⚖️ License
 Distributed under the MIT License. Feel free to clone, build upon, or share with industry stakeholders.
