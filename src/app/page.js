@@ -21,7 +21,7 @@ export default function Home() {
 
   // Handle Successful Submission
   const handleMatchSubmit = (id) => {
-    setSuccessMessage(`✅ Match pipeline successfully generated for Stream ${id}! Check your email for verification steps.`);
+    setSuccessMessage(`Match pipeline successfully generated for Stream ${id}. Check your email for verification steps.`);
     setTimeout(() => setSuccessMessage(''), 6000);
   };
 
@@ -35,33 +35,40 @@ export default function Home() {
   }, [selectedCluster, selectedStatus]);
 
   return (
-    <main className="min-h-screen bg-slate-50/50 p-4 md:p-8 font-sans">
-      {/* Top Banner Contextual Tag */}
-      <div className="max-w-7xl mx-auto mb-6 bg-slate-900 text-white p-4 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm border border-slate-800">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="bg-emerald-500 text-slate-900 text-[10px] font-bold uppercase px-2 py-0.5 rounded-full tracking-wider">
-              Simulation Environment
-            </span>
-            <span className="text-slate-400 text-xs font-medium">
-              Aligned with GEF-UNIDO Nigeria Industrial Energy Framework
-            </span>
+    <main className="min-h-screen bg-[#f7f8fa] font-sans">
+      {/* Primary Application Header */}
+      <header className="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-900 text-white border-b border-slate-800/80">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2.5">
+              <span className="bg-emerald-500/90 text-slate-950 text-[10px] font-bold uppercase px-2.5 py-1 rounded-full tracking-wider">
+                Simulation Environment
+              </span>
+              <span className="text-slate-400 text-xs font-medium">
+                Aligned with GEF-UNIDO Nigeria Industrial Energy Framework
+              </span>
+            </div>
+            <h1 className="text-2xl md:text-[28px] font-bold tracking-tight mt-2 text-white">
+              Nigeria Thermal Waste & Heat Exchange Network
+            </h1>
+            <p className="text-slate-400 text-sm mt-1">
+              Anonymous B2B matching for industrial waste heat recovery and cleaner energy transitions
+            </p>
           </div>
-          <h1 className="text-2xl font-bold tracking-tight mt-1 text-slate-100">
-            Nigeria Thermal Waste & Heat Exchange Network
-          </h1>
+          <div className="text-xs bg-white/5 px-4 py-3 rounded-xl border border-white/10 text-slate-300 backdrop-blur-sm">
+            <span className="block text-slate-500 uppercase tracking-wider text-[10px] font-semibold mb-1">Core Hubs</span>
+            <span className="font-semibold text-emerald-400">Lagos · Ogun · Kano · Anambra</span>
+          </div>
         </div>
-        <div className="text-xs bg-slate-800 px-4 py-2.5 rounded-xl border border-slate-700/50 text-slate-300">
-          📍 Core Hubs: <span className="font-semibold text-emerald-400">Lagos | Ogun | Kano | Anambra</span>
-        </div>
-      </div>
+      </header>
 
+      <div className="p-4 md:p-8">
       {/* Main Container */}
       <div className="max-w-7xl mx-auto space-y-6">
-        
+
         {/* Success Alert Banner */}
         {successMessage && (
-          <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-3.5 rounded-xl text-sm font-medium animate-bounce shadow-sm">
+          <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-3.5 rounded-xl text-sm font-medium shadow-sm">
             {successMessage}
           </div>
         )}
@@ -79,9 +86,9 @@ export default function Home() {
           <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
             <div>
               <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">Industrial Cluster</label>
-              <select 
+              <select
                 value={selectedCluster} onChange={(e) => setSelectedCluster(e.target.value)}
-                className="bg-slate-50 border border-slate-200 rounded-lg text-slate-700 text-xs px-3 py-2 focus:outline-none focus:border-emerald-500 font-medium"
+                className="bg-slate-50 border border-slate-200 rounded-xl text-slate-700 text-xs px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 font-medium transition-colors hover:border-slate-300"
               >
                 <option value="All">All Regions</option>
                 <option value="Ikeja">Ikeja, Lagos</option>
@@ -94,9 +101,9 @@ export default function Home() {
 
             <div>
               <label className="block text-[10px] uppercase font-bold text-slate-400 mb-1">Stream Status</label>
-              <select 
+              <select
                 value={selectedStatus} onChange={(e) => setSelectedStatus(e.target.value)}
-                className="bg-slate-50 border border-slate-200 rounded-lg text-slate-700 text-xs px-3 py-2 focus:outline-none focus:border-emerald-500 font-medium"
+                className="bg-slate-50 border border-slate-200 rounded-xl text-slate-700 text-xs px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 font-medium transition-colors hover:border-slate-300"
               >
                 <option value="All">All Streams</option>
                 <option value="Available">Available Asset</option>
@@ -133,47 +140,48 @@ export default function Home() {
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3 py-2 bg-slate-50/50 px-3 rounded-lg border border-slate-100">
-                    <div>
-                      <span className="text-[10px] text-slate-400 font-semibold uppercase block">Temperature</span>
-                      <span className="text-base font-bold text-orange-600">{profile.temperature_celsius}°C</span>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="bg-orange-50 border border-orange-100 rounded-xl px-3 py-2.5">
+                      <span className="text-[10px] text-orange-700/70 font-semibold uppercase tracking-wide block">Temperature</span>
+                      <span className="text-base font-bold text-orange-700">{profile.temperature_celsius}°C</span>
                     </div>
-                    <div>
-                      <span className="text-[10px] text-slate-400 font-semibold uppercase block">Flow Rate</span>
-                      <span className="text-base font-bold text-slate-800">{profile.flow_rate_m3_h} <span className="text-xs font-normal text-slate-500">m³/h</span></span>
+                    <div className="bg-sky-50 border border-sky-100 rounded-xl px-3 py-2.5">
+                      <span className="text-[10px] text-sky-700/70 font-semibold uppercase tracking-wide block">Flow Rate</span>
+                      <span className="text-base font-bold text-sky-700">{profile.flow_rate_m3_h} <span className="text-xs font-normal text-sky-600/80">m³/h</span></span>
                     </div>
                   </div>
 
-                  <div className="space-y-2 text-xs">
-                    <div>
-                      <span className="text-slate-400 font-semibold">📍 Location Cluster:</span>
-                      <p className="text-slate-700 font-medium">{profile.cluster}</p>
+                  <div className="bg-slate-50/70 border border-slate-100 rounded-xl divide-y divide-slate-100">
+                    <div className="flex items-center justify-between px-3 py-2 gap-3">
+                      <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wide shrink-0">Location Cluster</span>
+                      <p className="text-slate-700 font-medium text-xs text-right">{profile.cluster}</p>
                     </div>
-                    <div>
-                      <span className="text-slate-400 font-semibold">⚙️ Thermal Source:</span>
-                      <p className="text-slate-700 font-medium">{profile.source_type}</p>
+                    <div className="flex items-center justify-between px-3 py-2 gap-3">
+                      <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wide shrink-0">Thermal Source</span>
+                      <p className="text-slate-700 font-medium text-xs text-right">{profile.source_type}</p>
                     </div>
-                    <div>
-                      <span className="text-slate-400 font-semibold">🕒 System Availability:</span>
-                      <p className="text-slate-700 font-medium">{profile.availability}</p>
+                    <div className="flex items-center justify-between px-3 py-2 gap-3">
+                      <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wide shrink-0">System Availability</span>
+                      <p className="text-slate-700 font-medium text-xs text-right">{profile.availability}</p>
                     </div>
-                    <div className="pt-2 border-t border-slate-100">
-                      <span className="text-slate-400 font-semibold block mb-0.5">💡 Primary Recovery Pathway:</span>
-                      <p className="text-slate-600 italic bg-emerald-50/30 p-2 rounded text-[11px] leading-snug">{profile.potential_use}</p>
-                    </div>
+                  </div>
+
+                  <div className="bg-emerald-50/60 border border-emerald-100 rounded-xl px-3 py-2.5">
+                    <span className="text-[10px] text-emerald-700/70 font-semibold uppercase tracking-wide block mb-1">Primary Recovery Pathway</span>
+                    <p className="text-emerald-900/80 text-[11px] leading-snug">{profile.potential_use}</p>
                   </div>
                 </div>
 
                 <div className="bg-slate-50 p-4 border-t border-slate-100">
                   {profile.status === 'Available' ? (
-                    <button 
+                    <button
                       onClick={() => handleMatchRequest(profile)}
-                      className="w-full bg-slate-900 text-white text-xs font-semibold py-2.5 rounded-lg hover:bg-emerald-700 shadow-sm transition duration-200"
+                      className="w-full bg-slate-900 text-white text-xs font-semibold py-2.5 rounded-xl hover:bg-emerald-700 shadow-sm transition-colors duration-200"
                     >
-                      Request Technical Match (🔒 NDA Required)
+                      Request Technical Match — NDA Required
                     </button>
                   ) : (
-                    <button disabled className="w-full bg-slate-200 text-slate-400 text-xs font-semibold py-2.5 rounded-lg cursor-not-allowed">
+                    <button disabled className="w-full bg-slate-200 text-slate-400 text-xs font-semibold py-2.5 rounded-xl cursor-not-allowed">
                       Asset Allocation Secured
                     </button>
                   )}
@@ -183,12 +191,13 @@ export default function Home() {
           </div>
         )}
       </div>
+      </div>
 
       {/* Match Request Workflow Modal Overlay */}
-      <MatchModal 
-        isOpen={modalOpen} 
-        onClose={() => setModalOpen(false)} 
-        profile={selectedProfile} 
+      <MatchModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        profile={selectedProfile}
         onSubmitSuccess={handleMatchSubmit}
       />
     </main>
