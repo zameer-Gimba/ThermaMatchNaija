@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { X } from 'lucide-react';
 
 export default function MatchModal({ isOpen, onClose, profile, onSubmitSuccess }) {
   const [formData, setFormData] = useState({ companyName: '', email: '', authorizedRole: '' });
@@ -21,19 +22,25 @@ export default function MatchModal({ isOpen, onClose, profile, onSubmitSuccess }
             <h3 className="text-lg font-bold text-slate-900">Initiate Secure Technical Match</h3>
             <p className="text-xs text-slate-500 mt-0.5">Target Stream: {profile.id} ({profile.sector})</p>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-600 font-bold p-1">&times;</button>
+          <button
+            onClick={onClose}
+            aria-label="Close"
+            className="text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg p-1.5 transition-colors"
+          >
+            <X size={18} strokeWidth={2.25} />
+          </button>
         </div>
 
         <form onSubmit={handleSubmit} className="mt-4 space-y-4">
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs text-amber-800 leading-relaxed">
-            <strong>🔒 Corporate Non-Disclosure Notice:</strong> This profile is protected under the MAN/UNIDO Industrial Data Framework. Corporate coordinates will only be unlocked upon standard digital token signing and verification.
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-800 leading-relaxed">
+            <strong>Corporate Non-Disclosure Notice:</strong> This profile is protected under the MAN/UNIDO Industrial Data Framework. Corporate coordinates will only be unlocked upon standard digital token signing and verification.
           </div>
 
           <div>
             <label className="block text-xs font-semibold text-slate-700 uppercase mb-1">Company / Facility Name</label>
-            <input 
+            <input
               type="text" required placeholder="e.g., Nigerian Breweries Plc"
-              className="w-full text-slate-800 px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:border-emerald-500 text-sm"
+              className="w-full text-slate-800 px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 text-sm transition-colors"
               value={formData.companyName} onChange={e => setFormData({...formData, companyName: e.target.value})}
             />
           </div>
@@ -41,24 +48,24 @@ export default function MatchModal({ isOpen, onClose, profile, onSubmitSuccess }
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-semibold text-slate-700 uppercase mb-1">Corporate Email</label>
-              <input 
+              <input
                 type="email" required placeholder="name@company.com.ng"
-                className="w-full text-slate-800 px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:border-emerald-500 text-sm"
+                className="w-full text-slate-800 px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 text-sm transition-colors"
                 value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})}
               />
             </div>
             <div>
               <label className="block text-xs font-semibold text-slate-700 uppercase mb-1">Designation / Role</label>
-              <input 
+              <input
                 type="text" required placeholder="e.g., Plant Operations Manager"
-                className="w-full text-slate-800 px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:border-emerald-500 text-sm"
+                className="w-full text-slate-800 px-3 py-2 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 text-sm transition-colors"
                 value={formData.authorizedRole} onChange={e => setFormData({...formData, authorizedRole: e.target.value})}
               />
             </div>
           </div>
 
-          <div className="flex items-start gap-2 bg-slate-50 p-3 rounded-lg border border-slate-100">
-            <input 
+          <div className="flex items-start gap-2 bg-slate-50 p-3 rounded-xl border border-slate-100">
+            <input
               type="checkbox" id="nda-check" className="mt-0.5 accent-emerald-600 h-4 w-4"
               checked={agreed} onChange={e => setAgreed(e.target.checked)}
             />
@@ -68,15 +75,15 @@ export default function MatchModal({ isOpen, onClose, profile, onSubmitSuccess }
           </div>
 
           <div className="flex justify-end gap-3 pt-2 border-t border-slate-100">
-            <button 
+            <button
               type="button" onClick={onClose}
-              className="px-4 py-2 border border-slate-200 text-slate-600 rounded-lg text-sm hover:bg-slate-50 transition"
+              className="px-4 py-2 border border-slate-200 text-slate-600 rounded-xl text-sm hover:bg-slate-50 transition-colors"
             >
               Cancel
             </button>
-            <button 
+            <button
               type="submit"
-              className="px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700 shadow-sm transition"
+              className="px-4 py-2 bg-emerald-600 text-white rounded-xl text-sm font-medium hover:bg-emerald-700 shadow-sm transition-colors"
             >
               Submit Matching Request
             </button>
